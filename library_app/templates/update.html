@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Update book{% endblock %}
+
+{% block content %}
+    <hr>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.title.label }}
+            {{ form.title(size=50) }}
+            {% for error in form.title.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.author.label }}
+            {{ form.author }}
+            {% for error in form.author.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.date_published.label }}
+            {{ form.date_published(size=50) }}
+            {% for error in form.date_published.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <a class="btn btn-outline-primary" href="{{ url_for('read_books') }}">Back to list</a>
+        <input class="btn btn-primary" type="submit" value="Update">
+    </form>
+{% endblock %}

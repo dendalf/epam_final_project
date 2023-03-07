@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Update author{% endblock %}
+
+{% block content %}
+    <hr>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.first_name.label }}
+            {{ form.first_name(size=50) }}
+            {% for error in form.first_name.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.last_name.label }}
+            {{ form.last_name(size=50) }}
+            {% for error in form.last_name.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.birthdate.label }}
+            {{ form.birthdate }}
+            {% for error in form.birthdate.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <a class="btn btn-outline-primary" href="{{ url_for('author_list') }}">Back to list</a>
+        <input class="btn btn-primary" type="submit" value="Update">
+    </form>
+{% endblock %}
