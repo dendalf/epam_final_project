@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete book{% endblock %}
+
+{% block content %}
+    <hr>
+    <h1>{{ title }}</h1>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            Are you want to remove book "{{ book.title }}"?
+        </p>
+        <p>
+            <a class="btn btn-outline-primary" href="{{ url_for('read_books') }}">Back to list</a>
+            <input class="btn btn-danger" type="submit" value="Delete">
+        </p>
+    </form>
+{% endblock %}

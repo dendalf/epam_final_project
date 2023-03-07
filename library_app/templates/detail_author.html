@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Detail of author{% endblock %}
+
+{% block content %}
+    <hr>
+    <h2>{{ title }}</h2>
+    <p>First name: {{ author.first_name }}</p>
+    <p>Last name: {{ author.last_name }}</p>
+    <p>Birthday: {{ author.birthdate }}</p>
+    <div class="d-grid gap-2 d-md-flex justify-content-md">
+        <a class="btn btn-outline-primary btn-sm" href="{{ url_for('author_list') }}">Back to list</a>
+        <a class="btn btn-primary btn-sm" href="{{ url_for('update_author', pk=author.id) }}">Update</a>
+        <a class="btn btn-outline-danger btn-sm" href="{{ url_for('delete_author', pk=author.id) }}">Delete</a>
+    </div>
+{% endblock %}

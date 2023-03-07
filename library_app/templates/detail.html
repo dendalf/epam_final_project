@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Detail of book{% endblock %}
+
+{% block content %}
+    <hr>
+    <h2>{{ title }}</h2>
+    <p>Title: {{ book.title }}</p>
+    <p>Author: {{ book.author }}</p>
+    <p>Date published: {{ book.date_published }}</p>
+    <div class="d-grid gap-2 d-md-flex justify-content-md">
+        <a class="btn btn-outline-primary btn-sm" href="{{ url_for('read_books') }}">Back to list</a>
+        <a class="btn btn-primary btn-sm" href="{{ url_for('update', pk=book.id) }}">Update</a>
+        <a class="btn btn-outline-danger btn-sm" href="{{ url_for('delete', pk=book.id) }}">Delete</a>
+    </div>
+{% endblock %}
