@@ -1,3 +1,4 @@
+
 from library_app import db
 from datetime import datetime
 
@@ -7,6 +8,7 @@ class Book(db.Model):
     title = db.Column(db.String(50), nullable=False)
     author_id = db.Column(db.Integer, db.ForeignKey('author.id'), nullable=False)
     date_published = db.Column(db.Date, nullable=False)
+    price = db.Column(db.Integer, nullable=False)
     created = db.Column(db.DateTime, default=datetime.utcnow)
     updated = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
@@ -26,3 +28,12 @@ class Author(db.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+
+    def get_avg_price(self):
+        if self.books:
+            sum_price = 0
+            for book in self.books:
+                sum_price += book.price
+            return round(sum_price / len(self.books))
+        else:
+            return 0

@@ -1,6 +1,8 @@
+from datetime import datetime
+
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, DateField, SelectField
-from wtforms.validators import DataRequired, Length
+from wtforms import StringField, SubmitField, DateField, SelectField, IntegerField
+from wtforms.validators import DataRequired, Length, NumberRange
 
 
 # Book Forms
@@ -9,6 +11,7 @@ class CreateBookForm(FlaskForm):
     title = StringField(label='Title', validators=[DataRequired(), Length(min=2, max=50)])
     author = SelectField('Author', validators=[DataRequired()])
     date_published = DateField(label='Date published', validators=[DataRequired()], format='%Y-%m-%d')
+    price = IntegerField(label='Price', validators=[DataRequired()])
     submit = SubmitField(label='Create')
 
 
@@ -16,11 +19,18 @@ class UpdateBookForm(FlaskForm):
     title = StringField(label='Title', validators=[DataRequired(), Length(min=2, max=50)])
     author = SelectField('Author', validators=[DataRequired()])
     date_published = DateField(label='Date published', validators=[DataRequired()], format='%Y-%m-%d')
+    price = IntegerField(label='Price', validators=[DataRequired()])
     submit = SubmitField(label='Update')
 
 
 class DeleteBookForm(FlaskForm):
     submit = SubmitField(label='Delete')
+
+
+class FilterBookForm(FlaskForm):
+    date_published_start = DateField(label='Date published start', validators=[DataRequired()], format='%Y-%m-%d')
+    date_published_end = DateField(label='Date published end', validators=[DataRequired()], format='%Y-%m-%d')
+    submit = SubmitField(label='Submit')
 
 
 # Author Forms

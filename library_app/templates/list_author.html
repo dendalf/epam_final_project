@@ -11,6 +11,7 @@
         <th>First name</th>
         <th>Last name</th>
         <th>Birthday</th>
+        <th>Average book price</th>
         <th><i class="bi bi-pencil-fill"></i></th>
         <th><i class="bi bi-trash3-fill"></i></th>
     </tr>
@@ -21,6 +22,7 @@
         <td><a href="{{ url_for('detail_author', pk=author.id) }}">{{author.first_name}} </a></td>
         <td>{{author.last_name}}</td>
         <td class="text-center">{{author.birthdate}}</td>
+        <td class="text-center">{{author.get_avg_price()}}</td>
         <td class="text-center"><a class="btn btn-outline-primary btn-sm" href="{{ url_for('update_author', pk=author.id) }}">Edit</a>
         </td>
         <td class="text-center"><a class="btn btn-outline-danger btn-sm" href="{{ url_for('delete_author', pk=author.id) }}">Remove</a>
