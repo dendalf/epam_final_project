@@ -1,7 +1,6 @@
-from datetime import date, datetime
+from datetime import datetime
 
 from flask import request, render_template, redirect, url_for
-from flask_filter.query_filter import query_with_filters
 
 from library_app import db, app
 from library_app.models import Book, Author

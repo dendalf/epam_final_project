@@ -1,6 +1,6 @@
 
-from library_app import db
 from datetime import datetime
+from library_app import db
 
 
 class Book(db.Model):
