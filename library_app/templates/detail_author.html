@@ -8,6 +8,7 @@
     <p>First name: {{ author.first_name }}</p>
     <p>Last name: {{ author.last_name }}</p>
     <p>Birthday: {{ author.birthdate }}</p>
+    <p>Average book price: {{ author.get_avg_price() }}</p>
     <div class="d-grid gap-2 d-md-flex justify-content-md">
         <a class="btn btn-outline-primary btn-sm" href="{{ url_for('author_list') }}">Back to list</a>
         <a class="btn btn-primary btn-sm" href="{{ url_for('update_author', pk=author.id) }}">Update</a>
