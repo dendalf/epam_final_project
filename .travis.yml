@@ -5,3 +5,5 @@ install:
   - pip install -r requirements.txt
 script:
   - pylint library_app
+after_script:
+  - coveralls

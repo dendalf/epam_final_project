@@ -1,3 +1,5 @@
+""" Views file for library_app """
+# pylint: disable=invalid-name, cyclic-import
 from datetime import datetime
 
 from flask import request, render_template, redirect, url_for
@@ -11,6 +13,7 @@ from library_app.forms import UpdateBookForm
 
 @app.route('/')
 def index():
+    """ Home page """
     return render_template('index.html', title='Home page', content='Welcome to Library!')
 
 
@@ -19,7 +22,7 @@ def index():
 
 @app.route('/book/list')
 def read_books():
-
+    """ List of books page """
     form = FilterBookForm()
     if request.args.get('date_published_start') and request.args.get('date_published_end'):
         form.date_published_start.data = datetime.strptime(request.args.get('date_published_start'), '%Y-%m-%d')
@@ -33,6 +36,7 @@ def read_books():
 
 @app.route('/book/detail/<int:pk>')
 def detail(pk):
+    """ Book detail page """
     book = Book.query.filter_by(id=pk).first()
 
     if book is None:
@@ -43,6 +47,7 @@ def detail(pk):
 
 @app.route('/book/create', methods=['GET', 'POST'])
 def create_book():
+    """ Create Book page """
     form = CreateBookForm()
     form.author.choices = [("", "-----")] + [(author.id, author) for author in Author.query.all()]
 
@@ -57,6 +62,7 @@ def create_book():
 
 @app.route('/book/update/<int:pk>', methods=['GET', 'POST'])
 def update(pk):
+    """ Update Book page """
     book = Book.query.get(pk)
     form = UpdateBookForm()
     form.author.choices = [(author.id, author) for author in Author.query.all()]
@@ -69,7 +75,7 @@ def update(pk):
         db.session.commit()
         return redirect(url_for('read_books'))
 
-    elif request.method == 'GET':
+    if request.method == 'GET':
         form.author.default = book.author_id
         form.process()
         form.title.data = book.title
@@ -81,6 +87,7 @@ def update(pk):
 
 @app.route('/book/delete/<int:pk>', methods=['GET', 'POST'])
 def delete(pk):
+    """ Delete Book page """
     book = Book.query.get(pk)
     form = DeleteBookForm()
 
@@ -97,6 +104,7 @@ def delete(pk):
 
 @app.route('/author/list')
 def author_list():
+    """ List of authors page """
     authors = Author.query.all()
 
     return render_template('list_author.html', title='List of authors', authors=authors)
@@ -104,6 +112,7 @@ def author_list():
 
 @app.route('/author/detail/<int:pk>')
 def detail_author(pk):
+    """ Author detail page """
     author = Author.query.filter_by(id=pk).first()
 
     if author is None:
@@ -114,6 +123,7 @@ def detail_author(pk):
 
 @app.route('/author/create', methods=['GET', 'POST'])
 def create_author():
+    """ Create author page """
     form = CreateAuthorForm()
 
     if form.validate_on_submit():
@@ -127,6 +137,7 @@ def create_author():
 
 @app.route('/author/update/<int:pk>', methods=['GET', 'POST'])
 def update_author(pk):
+    """ Update author page """
     author = Author.query.get(pk)
     form = UpdateAuthorForm()
 
@@ -137,7 +148,7 @@ def update_author(pk):
         db.session.commit()
         return redirect(url_for('author_list'))
 
-    elif request.method == 'GET':
+    if request.method == 'GET':
         form.first_name.data = author.first_name
         form.last_name.data = author.last_name
         form.birthdate.data = author.birthdate
@@ -147,6 +158,7 @@ def update_author(pk):
 
 @app.route('/author/delete/<int:pk>', methods=['GET', 'POST'])
 def delete_author(pk):
+    """ Delete author page """
     author = Author.query.get(pk)
     form = DeleteAuthorForm()
 

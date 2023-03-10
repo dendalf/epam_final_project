@@ -1,3 +1,5 @@
+""" Initial file for library_app """
+# pylint: disable=wrong-import-position, cyclic-import
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -25,4 +27,3 @@ migrate = Migrate(app, db, render_as_batch=True)
 
 from library_app import models
 from library_app import views
-
