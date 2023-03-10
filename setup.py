@@ -13,4 +13,3 @@ class Config:
     MYSQL_HOST = getenv('MYSQL_HOST')
     MYSQL_DB = getenv('MYSQL_DB')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-
