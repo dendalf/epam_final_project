@@ -6,6 +6,7 @@ from flask_migrate import Migrate
 
 from sqlalchemy import MetaData
 
+from library_app.services.logger import Logger
 from setup import Config
 
 
@@ -23,7 +24,11 @@ conv = {
 metadata = MetaData(naming_convention=conv)
 db = SQLAlchemy(app, metadata=metadata)
 migrate = Migrate(app, db, render_as_batch=True)
+logger = Logger()
 
 
-from library_app import models
-from library_app import views
+from library_app.models.author import Author
+from library_app.models.book import Book
+from .views import views_index
+from .views import views_book
+from .views import views_author
