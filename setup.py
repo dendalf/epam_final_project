@@ -12,4 +12,5 @@ class Config:
     MYSQL_PASSWORD = getenv('MYSQL_PASSWORD')
     MYSQL_HOST = getenv('MYSQL_HOST')
     MYSQL_DB = getenv('MYSQL_DB')
+    DEBUG_MODE = getenv('FLASK_DEBUG')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
