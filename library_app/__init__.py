@@ -13,6 +13,7 @@ from setup import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:5WeOjksAmysql@localhost:3306/book'
+app.config['MYSQL_PASSWORD'] = '5WeOjksAmysql'
 
 conv = {
     'ix': 'ix_%(column_0_label)s',
