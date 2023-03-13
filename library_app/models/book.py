@@ -15,7 +15,7 @@ class Book(db.Model):
     updated = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     def __str__(self):
-        return f'{self.title} {self.author}'
+        return f'{self.title}'
 
     def __repr__(self):
         return f'Book {self.id} {self.title} {self.created} {self.updated}'
