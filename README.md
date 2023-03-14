@@ -1,6 +1,6 @@
 # Library site
 
-[![Build Status](https://app.travis-ci.com/dendalf/epam_final_project.svg?branch=main)
+![Build Status](https://app.travis-ci.com/dendalf/epam_final_project.svg?branch=main)
 
 This is Library site where you can store and read books. It provides a platform for library workers to create and manage their books and authors. It uses RESTful web service to perform CRUD operations.
 
